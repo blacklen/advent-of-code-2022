@@ -49,7 +49,7 @@ const getTotalSize = (node) => {
     return sum;
   }, 0);
 
-  if (totalSize <= 100000) ans += totalSize;
+  if (totalSize <= 100000) ans1 += totalSize;
   totalSizes.push(totalSize);
   return totalSize;
 }
