@@ -6,6 +6,8 @@ const ROW = mapVal.length;
 const COL = mapVal[0].length;
 const visited = Array.from({ length: ROW }, () => Array(COL).fill(0));
 
+const startPoint = 'a'.charCodeAt();
+const endPoint = 'z'.charCodeAt();
 const endValue = 'E'.charCodeAt();
 const startValue = 'S'.charCodeAt();
 
@@ -19,8 +21,8 @@ const findNode = (value) => {
 const [startR, startC] = findNode(startValue);
 const [endR, endC] = findNode(endValue);
 
-mapVal[startR][startC] = 'a'.charCodeAt();
-mapVal[endR][endC] = 'z'.charCodeAt();
+mapVal[startR][startC] = startPoint;
+mapVal[endR][endC] = endPoint;
 
 // go higher at most 1 square or go lower
 const getNeighbors = (r, c) => {
@@ -61,7 +63,7 @@ const getToEnd = () => {
     }
   ];
 
-  while (!visited[startR][startC]) {
+  while (queue.length) {
     const current = queue.shift();
     const neighbors = getNeighbors(current.r, current.c);
     const neighborsValue = [current.value];
@@ -79,8 +81,17 @@ const getToEnd = () => {
     visited[current.r][current.c] = Math.min(...neighborsValue);
   }
 }
-
-
 getTimeExecution(getToEnd);
 
-console.log('Answer', visited[startR][startC] - 1);
+const ans1 = visited[startR][startC] - 1;
+let ans2 = ROW * COL;
+
+mapVal.map((item, r) => {
+  item.map((i, c) => {
+    if (i === startPoint && visited[r][c] && visited[r][c] < ans2) {
+      ans2 = visited[r][c];
+    }
+  })
+})
+
+console.log('Answer', ans1, ans2 - 1);
