@@ -1,5 +1,6 @@
-import { input7 as input } from '../input.js';
+import fs from 'fs';
 
+const input = fs.readFileSync('./input.txt').toString().trim();
 const fileSystem = {
   root: {
     files: [],
@@ -62,4 +63,5 @@ const ans2 = totalSizes.reduce((max, cur) => {
   return max;
 }, totalSize + 1);
 
-console.log('Answer', ans1, ans2);
+console.log('Answer part 1: ', ans1);
+console.log('Answer part 2: ', ans2);

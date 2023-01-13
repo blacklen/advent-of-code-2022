@@ -1,4 +1,6 @@
-import { input9 as input } from '../input.js';
+import fs from 'fs';
+
+const input = fs.readFileSync('./input.txt').toString().trim();
 
 // part 1
 const map = { '0-0': 1 };
@@ -96,4 +98,5 @@ input.split('\n').map(i => i.split(' ')).map(([direction, value]) => {
 const ans1 = Object.entries(map).length;
 const ans2 = Object.entries(map2).length;
 
-console.log('Answer', ans1, ans2);
+console.log('Answer part 1: ', ans1);
+console.log('Answer part 2: ', ans2);

@@ -1,4 +1,6 @@
-import { input4 as input } from '../input.js';
+import fs from 'fs';
+
+const input = fs.readFileSync('./input.txt').toString().trim();
 
 let ans1 = 0;
 let ans2 = 0;
@@ -21,4 +23,5 @@ input.split('\n').map(pair => pair.split(',')).map(([p1, p2]) => {
   }
 });
 
-console.log('Answer', ans1, ans2);
+console.log('Answer part 1: ', ans1);
+console.log('Answer part 2: ', ans2);

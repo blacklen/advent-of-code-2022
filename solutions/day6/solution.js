@@ -1,4 +1,6 @@
-import { input6 as input } from '../input.js';
+import fs from 'fs';
+
+const input = fs.readFileSync('./input.txt').toString().trim();
 
 function hasRepeats(str) {
   return /(.).*\1/.test(str);
@@ -16,4 +18,4 @@ while (ans < input.length - signal) {
   } else break;
 }
 
-console.log('Answer', ans + signal);
+console.log('Answer part 1:', ans + signal);

@@ -1,5 +1,7 @@
-import { input12 as input } from '../input.js';
+import fs from 'fs';
 import { getTimeExecution } from '../service.js';
+
+const input = fs.readFileSync('./input.txt').toString().trim();
 
 const mapVal = input.split('\n').map(i => i.split('').map(c => c.charCodeAt()));
 const ROW = mapVal.length;
@@ -92,6 +94,7 @@ mapVal.map((item, r) => {
       ans2 = visited[r][c];
     }
   })
-})
+});
 
-console.log('Answer', ans1, ans2 - 1);
+console.log('Answer part 1: ', ans1);
+console.log('Answer part 2: ', ans2 - 1);

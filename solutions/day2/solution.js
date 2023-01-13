@@ -1,6 +1,7 @@
-import { input2 as input } from '../input.js';
+import fs from 'fs';
 
-const formatInput = input.split('\n');
+const input = fs.readFileSync('./input.txt').toString().trim();
+const strategy = input.split('\n');
 
 // A,X: rock, B,Y: Paper, C,Z: Scissors
 const rates = {
@@ -38,14 +39,15 @@ const rates2 = {
   'C Y': 6,
 }
 
-const sum = formatInput.reduce((res, cur) => {
+const ans1 = strategy.reduce((res, cur) => {
   res += rates[cur];
   return res;
 }, 0);
 
-const sum2 = formatInput.reduce((res, cur) => {
+const ans2 = strategy.reduce((res, cur) => {
   res += rates2[cur];
   return res;
 }, 0);
 
-console.log('response', sum, sum2);
+console.log('Answer part 1: ', ans1);
+console.log('Answer part 2: ', ans2);

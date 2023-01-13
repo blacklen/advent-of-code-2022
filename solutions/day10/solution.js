@@ -1,5 +1,6 @@
-import { input10 as input } from '../input.js';
+import fs from 'fs';
 
+const input = fs.readFileSync('./input.txt').toString().trim();
 const cycle = [1];
 let previousVal = 1;
 let CRT = '#';
@@ -26,5 +27,6 @@ input.split('\n').map(i => {
 });
 
 const ans1 = [20, 60, 100, 140, 180, 220].reduce((sum, cur) => sum + (cycle[cur - 1] * cur), 0);
-console.log('Answer', ans1);
-console.log('Part 2', CRT);
+
+console.log('Answer part 1: ', ans1);
+console.log('Answer part 2:\n\n', CRT);

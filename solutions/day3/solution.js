@@ -1,9 +1,10 @@
-import { input3 as input } from '../input.js';
+import fs from 'fs';
 
+const input = fs.readFileSync('./input.txt').toString().trim();
 const formatInput = input.split('\n');
 const offset = 'a'.charCodeAt();
 
-const res = formatInput.reduce((sum, i) => {
+const ans1 = formatInput.reduce((sum, i) => {
   const mid = i.length / 2;
   const firstHalf = i.substring(0, mid);
   const secondHalf = i.substring(mid, i.length);
@@ -19,8 +20,6 @@ const res = formatInput.reduce((sum, i) => {
   return sum;
 }, 0);
 
-console.log('sum half-half', res);
-
 const group = [];
 let index = 0;
 
@@ -29,7 +28,7 @@ while (index < formatInput.length) {
   index += 3;
 }
 
-const sumGroup = group.reduce((sum, i) => {
+const ans2 = group.reduce((sum, i) => {
   i[0].split('').some(c => {
     if (i[1].includes(c) && i[2].includes(c)) {
       const value = c.charCodeAt();
@@ -42,5 +41,6 @@ const sumGroup = group.reduce((sum, i) => {
   return sum;
 }, 0);
 
-console.log('sum group', sumGroup);
+console.log('Answer part 1: ', ans1);
+console.log('Answer part 2: ', ans2);
 

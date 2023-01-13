@@ -1,4 +1,4 @@
-import { input5 as input } from '../input.js';
+import input from './input.js';
 
 const container = input.stack.split('\n  ')
   .map(i => i.replaceAll('    ', '-').replaceAll(' ', '').replace(/[\[\]]/g, ''));
@@ -15,7 +15,7 @@ input.commands.split('\n')
     stacks[target - 1] = [...stacks[source - 1].splice(0, length).reverse(), ...stacks[target - 1]]
   });
 
-const ans = stacks.map(i => i[0]).join('');
+const ans1 = stacks.map(i => i[0]).join('');
 
-console.log('Answer', ans);
+console.log('Answer part 1:', ans1);
 

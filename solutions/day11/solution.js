@@ -1,5 +1,6 @@
-import { input11 as input } from '../input.js';
+import fs from 'fs';
 
+const input = fs.readFileSync('./input.txt').toString().trim();
 const extractNumber = (string) => {
   return +string.replace(/\D/g,'');
 }
@@ -50,10 +51,11 @@ const run = (numOfRound, divider) => {
 
 const divider = monkeys.reduce((res, cur) => res * cur.test, 1);
 
-// part 2
+// part 1 have divider = 3
+// part 2 have divider = total sum divisible testing
 run(10000, divider);
 
 const inspectCounter = monkeys.map(monkey => monkey.inspectCounter).sort((a, b) => b - a);
 const ans = inspectCounter[0] * inspectCounter[1];
 
-console.log('Answer', ans, monkeys);
+console.log('Answer part 2: ', ans);
